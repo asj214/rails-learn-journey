@@ -1,5 +1,5 @@
 class AuthController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:register, :login]
+  skip_before_action :check_authenticate, only: [:register, :login]
 
   def register
     user_params = params.permit(:email, :name, :password)
