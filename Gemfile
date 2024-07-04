@@ -51,7 +51,12 @@ gem 'dotenv-rails', '~> 3.1', '>= 3.1.2'
 
 gem 'devise'
 gem 'jwt'
+
+# soft delete
 gem 'paranoia', '~> 2.6', '>= 2.6.3'
+
+# pagination
+gem 'kaminari', '~> 1.2', '>= 1.2.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

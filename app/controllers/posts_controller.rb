@@ -3,9 +3,25 @@ class PostsController < ApplicationController
   skip_before_action :check_authenticate, only: [:index, :show]
 
   def index
+    page = params[:page] || 1
+    per_page = params[:per_page] || 10
     posts = Post.all
-    # render plain: 'posts#index'
-    render json: posts
+
+    posts = posts.where("title LIKE '%#{params[:title]}%'") if params[:title].present?
+
+    posts = posts.order(id: :desc)
+    posts = posts.page(page).per(per_page)
+
+    render json: {
+      meta: {
+        current_page: posts.current_page,
+        next_page: posts.next_page,
+        prev_page: posts.prev_page,
+        total_pages: posts.total_pages,
+        total_count: posts.total_count
+      },
+      posts: posts
+    }
   end
 
   def create
