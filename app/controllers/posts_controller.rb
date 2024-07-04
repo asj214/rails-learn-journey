@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     page = params[:page] || 1
     per_page = params[:per_page] || 10
-    posts = Post.all
+    posts = Post.all.includes(:user)
 
     posts = posts.where("title LIKE '%#{params[:title]}%'") if params[:title].present?
 
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
         total_pages: posts.total_pages,
         total_count: posts.total_count
       },
-      posts: posts
+      posts: ActiveModelSerializers::SerializableResource.new(posts)
     }
   end
 
