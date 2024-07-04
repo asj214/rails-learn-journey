@@ -31,3 +31,46 @@ GET {{ BASE_URL }}/auth/me
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer {{token}}
+
+
+###
+GET {{ BASE_URL }}/posts
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+POST {{ BASE_URL }}/posts
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Hello Rails Post",
+  "body": "HoHoHo 123 123"
+}
+
+###
+GET {{ BASE_URL }}/posts/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+
+###
+PUT {{ BASE_URL }}/posts/1
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Hello Rails Post",
+  "body": "Ha~ Hoo ~~~"
+}
+
+###
+DELETE {{ BASE_URL }}/posts/4
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer {{token}}

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     post 'auth/register', to: 'auth#register'
     post 'auth/login', to: 'auth#login'
     get 'auth/me', to: 'auth#me'
+
+    resources :posts, only: [:index, :show, :create, :update, :destroy]
   end
 
   # Defines the root path route ("/")
